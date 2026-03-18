@@ -1,10 +1,22 @@
-import { compile_scss, compile_scss_compressed } from "./lib/grass_wasm.js";
-
 /**
  * This is a WASM build of the grass Rust crate
  * @see https://crates.io/crates/grass
+ *
+ * @example
+ * ```ts
+ * compileScss(`
+ *   $primary-color: #3498db;
+ *
+ *   body {
+ *     background-color: $primary-color;
+ *   }
+ * `);
+ * ```
+ *
  * @module
  */
+
+import { compile_scss, compile_scss_compressed } from "./lib/grass_wasm.js";
 
 /**
  * Compile SCSS using the grass Rust crate
