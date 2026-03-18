@@ -1,4 +1,5 @@
-import { assertEquals } from "@std/assert";
+import { assertEquals } from "@std/assert/equals";
+import { assertThrows } from "@std/assert/throws";
 import { compileScss } from "../mod.ts";
 
 const scss = `
@@ -33,4 +34,8 @@ Deno.test("should compile to compressed format", () => {
     compileScss(scss, true),
     "body{background-color:#3498db}body .container{padding:20px;color:#196090}",
   );
+});
+
+Deno.test("should throw error on bad SCSS syntax", () => {
+  assertThrows(() => compileScss("bad css"));
 });
