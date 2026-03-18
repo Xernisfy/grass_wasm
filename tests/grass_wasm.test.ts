@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { compile_scss, compile_scss_compressed } from "grass_wasm";
+import { compileScss } from "../mod.ts";
 
 const scss = `
   $primary-color: #3498db;
@@ -16,7 +16,7 @@ const scss = `
 
 Deno.test("should compile to expanded format", () => {
   assertEquals(
-    compile_scss(scss),
+    compileScss(scss),
     `body {
   background-color: #3498db;
 }
@@ -30,7 +30,7 @@ body .container {
 
 Deno.test("should compile to compressed format", () => {
   assertEquals(
-    compile_scss_compressed(scss),
+    compileScss(scss, true),
     "body{background-color:#3498db}body .container{padding:20px;color:#196090}",
   );
 });
